@@ -17,8 +17,8 @@ class objetoSeriado {
   Map<String, Object?> toMap() {
     return {
       'id': id,
-      'sitcomName': nomeSeriado,
-      'sitcomStreamingService': nomeServicodeStreaming
+      'nomeSeriado': nomeSeriado,
+      'nomeServicodeStreaming': nomeServicodeStreaming
     };
   }
 }

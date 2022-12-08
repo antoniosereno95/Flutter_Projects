@@ -20,7 +20,7 @@ class DataBaseHandler {
   //INSERT
   Future<void> insertnoBD(objetoSeriado seriado) async {
     final db = await initializeDB();
-    await db.insert('Sitcoms', seriado.toMap());
+    await db.insert('seriados', seriado.toMap());
   }
 
   //SELECT/LIST/READ
@@ -37,25 +37,24 @@ class DataBaseHandler {
 
   //DELETE
   Future<void> deletaPorNomedoDB(String nomeSeriado) async {
-    //returns number of items deleted
+    
     final db = await initializeDB();
     await db
         .delete("seriados", where: "nomeSeriado = ?", whereArgs: [nomeSeriado]);
   }
 
   Future<void> deletaPorIDdoDB(int id) async {
-    //returns number of items deleted
+    
     final db = await initializeDB();
     await db.delete("seriados", where: "id = ?", whereArgs: [id]);
   }
 
   //UPDATE
   Future<void> updateNoDB(int id, objetoSeriado novoObjeto) async {
-    // returns the number of rows updated
-
+    
     final db = await initializeDB();
 
-    await db.update("seriados", novoObjeto.toMap(), where: "id = ?", whereArgs: [id]);
+    await db.update("seriados", novoObjeto.toMap(),
+        where: "id = ?", whereArgs: [id]);
   }
-
 }

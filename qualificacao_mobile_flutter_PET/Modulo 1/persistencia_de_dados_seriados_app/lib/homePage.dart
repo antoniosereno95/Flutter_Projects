@@ -70,8 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: ElevatedButton(
                   onPressed: () {
                     //colocar pra salvar os dados no BD
-                    // ignore: unnecessary_new
-                    objetoSeriado ob = new objetoSeriado(
+                    objetoSeriado ob = objetoSeriado(
                         //crio o meu novo objeto com as infor,açoes colocadas pleo ususario
                         nomeSeriado: controllerSeriado.text.toString(),
                         nomeServicodeStreaming:
