@@ -62,16 +62,18 @@ class _SecondPageState extends State<SecondPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: ((context) =>
-                                              updatePage(id_antigo: idd))));
+                                          builder: ((context) => updatePage(
+                                                ob_antigo: snapshot.data![index]
+                                                    as GastoOb,
+                                              ))));
                                 }
                               },
                               child: const Text("Editar")),
                           //botao deletar entrada de gastos
                           ElevatedButton(
                               onPressed: () {
-                                handler.deletaPorCategoria(
-                                    snapshot.data![index].categoria);
+                                handler.deletaPorIDdoDB(
+                                    snapshot.data![index].id as int);
                                 posDeletar();
 
                                 /*

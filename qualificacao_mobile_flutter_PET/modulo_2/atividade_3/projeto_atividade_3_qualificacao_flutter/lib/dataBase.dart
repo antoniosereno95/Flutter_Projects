@@ -32,6 +32,7 @@ class DataBaseHandler {
         valor: result[index]['valor'],
         categoria: result[index]['categoria'],
         descricao: result[index]['descricao'],
+        id: result[index]['id'],
       );
     });
   }
@@ -61,7 +62,7 @@ class DataBaseHandler {
   //UPDATE
   Future<void> updateNoDB(GastoOb novoGasto) async {
     final db = await initializeDB();
-    
+
     await db
         .update("gastos", novoGasto.toMap(), where: "id = ?", whereArgs: [novoGasto.id]);
   }

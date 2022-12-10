@@ -4,10 +4,10 @@ import 'package:projeto_atividade_3_qualificacao_flutter/dataBase.dart';
 import 'package:projeto_atividade_3_qualificacao_flutter/secondPage.dart';
 
 class updatePage extends StatefulWidget {
-  const updatePage({super.key, this.title, required this.id_antigo});
+  const updatePage({super.key, this.title, required this.ob_antigo});
 
   final String? title;
-  final int id_antigo;
+  final GastoOb ob_antigo;
 
   @override
   State<updatePage> createState() => _updatePage();
@@ -90,10 +90,22 @@ class _updatePage extends State<updatePage> {
                 child: ElevatedButton(
                   onPressed: () {
                     //aqui eu crio um objeto com os controllers e coloco na handler.update
-                    if (widget.id_antigo != null) {
+                    //-> aqui tem que organizar o objeto de acorod com os campos preenchidos, se o user nao preencher um campo na pagina update, os valores do objeto antigo devem ser perpetuados
+                    if (widget.ob_antigo.id != null) {
+                      
+                      if(controllerDescricao.text == null || controllerDescricao.text == ""){
+                            controllerDescricao.text = widget.ob_antigo.descricao.toString();
+                            }
+                      if(controllerCategoria.text == null || controllerCategoria.text == ""){
+                            controllerCategoria.text = widget.ob_antigo.categoria.toString();
+                            }
+                      if(controllerValor.text == null || controllerValor.text == ""){
+                            controllerValor.text = widget.ob_antigo.valor.toString();
+                            }
+
                       GastoOb gob = GastoOb(
-                          id: widget.id_antigo,
-                          valor: double.parse(controllerValor.text),
+                          id: widget.ob_antigo.id,
+                          valor: double.tryParse(controllerValor.text) as double,
                           descricao: controllerDescricao.text,
                           categoria: controllerCategoria.text);
 
